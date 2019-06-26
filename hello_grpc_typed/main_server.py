@@ -20,8 +20,8 @@ class HellogRPCServiceImpl(HellogRPCServicer):
 if __name__ == "__main__":
     auth_port = 4620
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 4))
-    add_HellogRPCServicer_to_server(servicer = HellogRPCServiceImpl, server = server)
-    server.add_insecure_port('[::]:{0}'.format(auth_port))
+    add_HellogRPCServicer_to_server(servicer = HellogRPCServiceImpl(), server = server)
+    server.add_insecure_port('localhost:{0}'.format(auth_port))
     server.start()
     while True:
         sleep(ONE_DAY_IN_SECONDS)

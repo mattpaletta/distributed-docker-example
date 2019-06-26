@@ -14,7 +14,7 @@ class CalculatorImplementation(CalculatorServicer):
         y = request.y
         return Number(n = x + y)
 
-    def get_mult(self, request, context):
+    def get_mult(self, request: Calculation, context: grpc.RpcContext = None) -> Number:
         x = request.x
         y = request.y
         return Number(n = x * y)
@@ -23,8 +23,8 @@ class CalculatorImplementation(CalculatorServicer):
 if __name__ == "__main__":
     calc_port = 1234
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 4))
-    add_CalculatorServicer_to_server(servicer = CalculatorImplementation, server = server)
-    server.add_insecure_port('[::]:{0}'.format(calc_port))
+    add_CalculatorServicer_to_server(servicer = CalculatorImplementation(), server = server)
+    server.add_insecure_port('localhost:{0}'.format(calc_port))
     server.start()
     while True:
         sleep(ONE_DAY_IN_SECONDS)
