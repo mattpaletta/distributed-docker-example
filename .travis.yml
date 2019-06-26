@@ -18,7 +18,7 @@ env:
   - WEATHER_APP=1
 
 install:
-  - apt-get update -y && apt-get install -y docker-compose
+  - sudo apt-get update -y && sudo apt-get install -y docker-compose
   - pip install mypy grpcio-tools grpcio mypy-protobuf
 
 script:
