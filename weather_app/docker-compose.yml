@@ -1,5 +1,9 @@
-version: 3
+version: "3"
 services:
+  client:
+    build: client
+    links:
+      - weather
   weather:
     build: weather
     links:
