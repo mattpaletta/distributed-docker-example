@@ -6,3 +6,9 @@ server: protos
 
 client: protos
 	python3 main_client.py
+
+serverd: protos
+	python3 main_server.py &
+
+clientd: protos
+	python3 main_client.py &

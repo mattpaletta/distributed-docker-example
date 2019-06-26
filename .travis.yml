@@ -29,12 +29,12 @@ install:
 script:
   # Run exercises
   - if [ "$EXERCISES_DOCKER" == 1 ]; then sh -c "cd exercises/docker/run_docker && pip3 install -r requirements.txt && python3 main.py"; fi
-  - if [ "$EXERCISES_GRPC_MY_CLIENT" == 1 ]; then sh -c "cd exercises/grpc/my_client && make server & && make client"; fi
+  - if [ "$EXERCISES_GRPC_MY_CLIENT" == 1 ]; then sh -c "cd exercises/grpc/my_client && make serverd & && make client"; fi
   - if [ "$EXERCISES_GRPC_MY_SERVER" == 1 ]; then sh -c "cd exercises/grpc/my_client && make protos"; fi
 
   # Run examples
-  - if [ "$HELLO_COMPOSE" == 1 ]; then sh -c "cd hello_compose && ${docker-compose up --build &} && docker-compose wait foo"; fi
-  - if [ "$HELLO_GRPC" == 1 ]; then sh -c "cd hello_grpc && make server & && make client"; fi
-  - if [ "$HELLO_GRPC_TYPED" == 1 ]; then sh -c "cd hello_grpc && make server & && make client"; fi
+  - if [ "$HELLO_COMPOSE" == 1 ]; then sh -c "cd hello_compose && docker-compose up --build -d && docker wait hello_compose_foo_1 && docker-compose logs foo"; fi
+  - if [ "$HELLO_GRPC" == 1 ]; then sh -c "cd hello_grpc && make serverd && make client"; fi
+  - if [ "$HELLO_GRPC_TYPED" == 1 ]; then sh -c "cd hello_grpc && make serverd && make client"; fi
 
   - if [ "$WEATHER_APP" == 1 ]; then cd weather_app && make test; fi
