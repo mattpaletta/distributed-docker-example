@@ -1,0 +1,23 @@
+syntax = "proto3";
+package my_server.weather;
+
+message WeatherQuery {
+    string city = 1;
+    string country = 2;
+
+    // Feel free to add this line if you like (optional)
+//    int64 datetime_epoch = 3;
+
+}
+
+message CurrentWeather {
+    // Current temperature in Celcius.
+    int32 temperature = 1;
+
+    // Cloudy, Sunny, Snowing, Raining, etc.
+    string condition = 2;
+}
+
+service Weather {
+    rpc get_weather(WeatherQuery) returns (CurrentWeather) {};
+}

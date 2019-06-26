@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package hellogrpc.helloworld;
+
+message HelloData {
+    int64 x = 1;
+    int64 y = 2;
+    string user = 3;
+}
+
+message GoodbyeData {
+    int64 the_thing = 4;
+}
+
+service HellogRPC {
+    rpc do_the_thing(HelloData) returns (GoodbyeData) {};
+}

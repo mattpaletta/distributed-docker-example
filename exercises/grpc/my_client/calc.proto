@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package my_client.calc;
+
+message Calculation {
+    float x = 1;
+    float y = 2;
+}
+
+message Number {
+    float n = 1;
+}
+
+service Calculator {
+    rpc get_add(Calculation) returns (Number) {};
+    rpc get_mult(Calculation) returns (Number) {};
+}

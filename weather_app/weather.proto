@@ -1,0 +1,23 @@
+syntax = "proto3";
+package my_server.weather;
+
+message WeatherCity {
+    string city = 1;
+}
+
+message Location {
+    float latitude = 1;
+    float longitude = 2;
+}
+
+message CurrentWeather {
+    string text = 1;
+    string date = 2;
+    float high = 3;
+    float low = 4;
+}
+
+service Weather {
+    rpc get_weather(WeatherCity) returns (CurrentWeather) {};
+    rpc get_location(Location) returns (CurrentWeather) {};
+}

@@ -1,0 +1,8 @@
+version: 3
+services:
+  weather:
+    build: weather
+    links:
+      - cache
+  cache:
+    image: redis:alpine

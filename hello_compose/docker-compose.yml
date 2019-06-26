@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  foo:
+    build: foo
+    links:
+      - bar
+  bar:
+    image: redis:alpine
