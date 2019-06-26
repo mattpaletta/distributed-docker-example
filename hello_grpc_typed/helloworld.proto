@@ -9,7 +9,7 @@ message HelloData {
 }
 
 message GoodbyeData {
-    int64 the_thing = 4;
+    int64 the_thing = 1;
 }
 
 service HellogRPC {

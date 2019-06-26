@@ -69,7 +69,7 @@ class WeatherImplementation(WeatherServicer):
 if __name__ == "__main__":
     hello_port = 4620
     server = grpc.server(futures.ThreadPoolExecutor(max_workers = 4))
-    add_WeatherServicer_to_server(servicer = WeatherImplementation, server = server)
+    add_WeatherServicer_to_server(servicer = WeatherImplementation(), server = server)
     server.add_insecure_port('[::]:{0}'.format(hello_port))
     server.start()
     while True:
