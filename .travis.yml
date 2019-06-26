@@ -37,4 +37,4 @@ script:
   - if [ "$HELLO_GRPC" == 1 ]; then sh -c "cd hello_grpc && make serverd && make client"; fi
   - if [ "$HELLO_GRPC_TYPED" == 1 ]; then sh -c "cd hello_grpc && make serverd && make client"; fi
 
-  - if [ "$WEATHER_APP" == 1 ]; then cd weather_app && make config && docker-compose up --build -d && docker wait weather_client_1 && docker-compose logs client; fi
+  - if [ "$WEATHER_APP" == 1 ]; then cd weather_app && make config && docker-compose up --build -d && docker wait weather_app_client_1 && docker-compose logs client; fi
